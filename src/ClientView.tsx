@@ -13,7 +13,13 @@ function ClientView() {
   useEffect(() => {
     // Fetch all courses when the component mounts
     fetchAllCourses()
-      .then((courses: SetStateAction<never[]>) => setCourses(courses))
+      .then((courses: SetStateAction<never[]>) => {
+        if (courses) {
+          setCourses(courses);
+        } else {
+          console.error('fetchAllCourses returned undefined');
+        }
+      })
       .catch((error: any) => console.error(error));
   }, []);
 
@@ -25,7 +31,7 @@ function ClientView() {
       <CourseNav />
       <div className="course-list">
         {
-          courses.length > 0 ? (
+          courses && courses.length > 0 ? (
             courses.map((course: any) => (
               <Link to={`/course/${course._id}`}>
                 <CourseList title={course?.title} description={course?.description} image={course?.image} level={course?.level} />
