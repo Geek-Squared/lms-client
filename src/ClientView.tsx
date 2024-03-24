@@ -17,11 +17,9 @@ function ClientView() {
       .catch((error: any) => console.error(error));
   }, []);
 
-  console.log('courses', courses)
 
   return (
     <>
-      {/* <CourseDetails courseItems={[]} /> */}
       <Navbar />
       <Hero />
       <CourseNav />

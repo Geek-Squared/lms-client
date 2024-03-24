@@ -1,7 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ClientView from './ClientView';
-import AdminView from './AdminView';
-import CourseView from './CourseView';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import './styles.scss';
 
 const App = () => {

@@ -15,7 +15,7 @@ interface CourseCardProps {
     price?: number;
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ title, description, imageUrl, authorPic, authorName, level, studentsEnrolled, rating, price }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ title, imageUrl, authorPic, authorName, level, studentsEnrolled, rating, price }) => {
     const [isLiked, setIsLiked] = useState(false);
 
     const handleLikeClick = () => {

@@ -1,9 +1,5 @@
 import "./styles.scss"
 
-interface IForumProps {
-
-}
-
 const Forum = () => {
     return (
         <div className="toogle-items">

@@ -95,12 +95,13 @@ export const useCourseStore = create<CourseState>((set) => ({
     // Module fields
     formData.append('title', module.title);
     formData.append('prerequisites', JSON.stringify(module.prerequisites));
+    //@ts-ignore
     formData.append('releaseDate', module.releaseDate);
     const filesArray = Array.isArray(files) ? files : [];
     // Video file
+    //@ts-ignore
     const videoFile = filesArray.find(file => file.name === module.videoUrl);
   
-    console.log('videoFileHook', videoFile);
   
     if (videoFile) {
       formData.append('videoUrl', videoFile, videoFile.name); 

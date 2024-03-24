@@ -1,7 +1,7 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import "./styles.scss";
-
+//@ts-ignore
 const DescriptionField = ({ field, form }) => {
   return (
     <div className="myEditor">
@@ -11,7 +11,7 @@ const DescriptionField = ({ field, form }) => {
         onReady={(editor) => {
           console.log('Editor is ready to use!', editor);
         }}
-        onChange={(event, editor) => {
+        onChange={(_, editor) => {
           const data = editor.getData();
           form.setFieldValue(field.name, data);
         }}

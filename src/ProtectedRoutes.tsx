@@ -2,7 +2,7 @@ import  { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "./state/auth/auth";
 
-function ProtectedRoute({ element, ...rest }) {
+function ProtectedRoute({ element }: any) {
     const navigate = useNavigate();
     const { user } = useAuthStore();
   

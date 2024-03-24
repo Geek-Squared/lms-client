@@ -3,10 +3,11 @@ import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import "./styles.scss";
 
+//@ts-ignore
 export const VideoJS = (props) => {
   const videoRef = React.useRef(null);
   const playerRef = React.useRef(null);
-  const {options, onReady} = props;
+  const { options, onReady } = props;
 
   React.useEffect(() => {
 
@@ -16,19 +17,21 @@ export const VideoJS = (props) => {
       const videoElement = document.createElement("video-js");
 
       videoElement.classList.add('vjs-big-play-centered');
+      //@ts-ignore
       videoRef.current.appendChild(videoElement);
-
+      //@ts-ignore
       const player = playerRef.current = videojs(videoElement, options, () => {
         videojs.log('player is ready');
         onReady && onReady(player);
       });
 
-    // You could update an existing player in the `else` block here
-    // on prop change, for example:
+      // You could update an existing player in the `else` block here
+      // on prop change, for example:
     } else {
       const player = playerRef.current;
-
+      //@ts-ignore
       player.autoplay(options.autoplay);
+      //@ts-ignore
       player.src(options.sources);
     }
   }, [options, videoRef]);
@@ -38,7 +41,9 @@ export const VideoJS = (props) => {
     const player = playerRef.current;
 
     return () => {
+      //@ts-ignore
       if (player && !player.isDisposed()) {
+        //@ts-ignore
         player.dispose();
         playerRef.current = null;
       }
@@ -47,7 +52,7 @@ export const VideoJS = (props) => {
 
   return (
     <div data-vjs-player className="video-player">
-      <div ref={videoRef}  />
+      <div ref={videoRef} />
     </div>
   );
 }

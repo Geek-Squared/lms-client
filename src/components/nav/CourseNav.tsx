@@ -1,5 +1,5 @@
 import React from 'react';
-import { faVideoCamera, faTimes, faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { faTimes, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './styles.scss';
 
@@ -7,7 +7,7 @@ interface ICourseNavProps {
     courses?: any;
     onModuleClick?: any;
 }
-
+//@ts-ignore
 const CourseNavItems = ({ title, children }) => {
     return (
         <details className="module-items">
@@ -34,6 +34,7 @@ const CourseNav: React.FC<ICourseNavProps> = ({ courses, onModuleClick }) => {
                     </div>
                     <CourseNavItems title="Section 1: Introduction">
                         {
+                            //@ts-ignore
                             courses?.modules.map((module) => (
                                 <ul>
                                      <li className="module-items__list" onClick={() => onModuleClick(module.videoUrl)}>{module?.title}</li>

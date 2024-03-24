@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import { faAdd, faTrash } from "@fortawesome/free-solid-svg-icons"
 import './styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,6 +31,7 @@ import UniqueCourseCard from '../../../../shared/cards/course/CreatedCourse';
 //   ),
 // });
 
+//@ts-ignore
 const CourseContentForm = ({ courseId }) => {
   const [moduleType, setModuleType] = useState([]);
   const [expandedModule, setExpandedModule] = useState(0);
@@ -44,6 +45,7 @@ const CourseContentForm = ({ courseId }) => {
   }, [getUser]);
 
   useEffect(() => {
+    //@ts-ignore
     fetchCourse(courseId, user?.token);
   }, [fetchCourse, courseId]);
 
@@ -92,6 +94,7 @@ const CourseContentForm = ({ courseId }) => {
         console.log('formdata', formData);
         try {
           console.log('Module added!');
+          //@ts-ignore
           await addModuleToCourse(course?._id, values.modules[0], formData, user.token);
 
           setSubmitting(false);
@@ -104,13 +107,11 @@ const CourseContentForm = ({ courseId }) => {
       }}
     >
       {({ values, setFieldValue, handleSubmit }) => {
-        const submitForm = () => {
-          handleSubmit();
-        };
         return (
 
           <div>
             <div className="page-container">
+              {/* @ts-ignore */}
               {values.modules.map((module, index) => (
                 <Form className="form" key={index}>
                   <div style={{
@@ -134,9 +135,10 @@ const CourseContentForm = ({ courseId }) => {
                   {expandedModule === index && (
                     <>
                       {moduleType[index] === 'video' &&
-                        <input type="file" 
-                        name={`modules.${index}.videoUrl`}
-                        accept="video/*" onChange={(event) => {
+                        <input type="file"
+                          name={`modules.${index}.videoUrl`}
+                          accept="video/*" onChange={(event) => {
+                            //@ts-ignore
                             setFieldValue(`modules.${index}.videoUrl`, event.currentTarget.files[0]);
                           }} />
                       }
@@ -146,6 +148,7 @@ const CourseContentForm = ({ courseId }) => {
                         <>
                           <label className="label" htmlFor={`modules.${index}.resources`}>Add a resource</label>
                           <Field name={`modules.${index}.resources[0].fileUrl`} placeholder="Resource File" type="file" accept="application/pdf,video/*"
+                            //@ts-ignore
                             onChange={async (event) => {
                               if (event.currentTarget.files.length > 0) {
                                 const resourceFile = event.currentTarget.files[0];
@@ -167,16 +170,20 @@ const CourseContentForm = ({ courseId }) => {
                 </Form>
               ))}
               <UniqueCourseCard
+                //@ts-ignore
                 title={course?.title}
                 description={course?.description}
                 imageUrl={"https://plus.unsplash.com/premium_photo-1678565869434-c81195861939?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" || course?.image}
                 authorPic="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 authorName="DR Hannah Stills"
+                //@ts-ignore
                 level={course?.level}
               // price={19.99}
               >
                 <div className="submit-button">
-                  <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
+                  <button type="submit" className="submit"
+                    //@ts-ignore
+                    onClick={handleSubmit}>Submit</button>
                 </div>
               </UniqueCourseCard>
             </div>
@@ -186,6 +193,7 @@ const CourseContentForm = ({ courseId }) => {
               </button>
               <div className="dropdown-content">
                 <a onClick={() => {
+                  //@ts-ignore
                   setModuleType([...moduleType, 'video']);
                   setFieldValue('modules', [...values.modules, { quizzes: [] }]);
                   setExpandedModule(values.modules.length); // Set new module as expanded

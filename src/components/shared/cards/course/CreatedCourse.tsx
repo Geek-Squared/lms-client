@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faUsers, faStar, faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faUsers, faStar } from '@fortawesome/free-solid-svg-icons';
 import './styles.scss';
 
 interface CourseCardProps {
@@ -9,6 +9,7 @@ interface CourseCardProps {
     imageUrl: string;
     authorPic: string;
     authorName: string;
+    //@ts-ignore
     level: string;
     studentsEnrolled: number;
     rating?: number;
@@ -16,12 +17,8 @@ interface CourseCardProps {
     children?:any;
 }
 
-const UniqueCourseCard: React.FC<CourseCardProps> = ({ title, description, imageUrl, authorPic, authorName, level, studentsEnrolled, rating, price, children }) => {
-    const [isLiked, setIsLiked] = useState(false);
-
-    const handleLikeClick = () => {
-        setIsLiked(!isLiked);
-    };
+const UniqueCourseCard: React.FC<CourseCardProps> = ({ title, description, imageUrl, level, studentsEnrolled, rating, price, children }) => {
+    // const [isLiked, setIsLiked] = useState(false);
 
     return (
         <div className="unique-course-card">

@@ -1,9 +1,5 @@
 import "./styles.scss"
 
-interface IResourcesProps {
-
-}
-
 const Resources = () => {
     return (
         <div className="toogle-items">

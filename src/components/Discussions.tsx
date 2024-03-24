@@ -1,9 +1,5 @@
 import "./styles.scss"
 
-interface IDiscussionsProps {
-
-}
-
 const Discussions = () => {
     return (
         <div className="toogle-items">

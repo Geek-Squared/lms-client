@@ -59,12 +59,15 @@ const CourseForm: FC<CourseFormProps> = ({ onNext }) => {
             if (key === 'image' && values[key]) {
               formData.append(key, values[key]);
             } else {
+              // @ts-ignore
               formData.append(key, values[key]);
             }
           });
 
           if (user && user.token) {
+            //@ts-ignore
             const newCourse = await createCourse(formData, user.token);
+            //@ts-ignore
             onNext(newCourse?.id);
           }
         } catch (error) {
@@ -105,6 +108,7 @@ const CourseForm: FC<CourseFormProps> = ({ onNext }) => {
 
           <label htmlFor="image">Course image/cover</label>
           <input id="image" name="image" type="file" onChange={(event) => {
+            //@ts-ignore
             setFieldValue("image", event.currentTarget.files[0]);
           }} />
           <ErrorMessage name="image" component="div" className="error-message" />

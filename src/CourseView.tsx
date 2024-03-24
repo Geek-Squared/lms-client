@@ -18,6 +18,7 @@ const CourseView: React.FC = () => {
   const playerRef = React.useRef(null);
   const fetchCourse = useCourseStore((state) => state.fetchCourse)
   const course = useCourseStore((state) => state.course);
+  //@ts-ignore
   const [currentVideoUrl, setCurrentVideoUrl] = useState<string>(course?.modules[0]?.videoUrl);
   const { courseId } = useParams<{ courseId: string }>();
   const { getUser, user } = useAuthStore();
@@ -28,32 +29,33 @@ const CourseView: React.FC = () => {
   }, [getUser]);
 
   useEffect(() => {
+    //@ts-ignore
     fetchCourse(courseId, user?.token);
   }, [courseId, fetchCourse]);
-  
-  console.log('coursee', course);
-  console.log('user', user);
+
 
   const videoJsOptions = {
     autoplay: true,
     controls: true,
     responsive: true,
     fluid: true,
-    sources: course?.modules.map((module) => ({
+    sources: course?.modules.map(() => ({
       src: currentVideoUrl,
       type: 'video/mp4'
     }))
   };
-
+  //@ts-ignore
   const handlePlayerReady = (player) => {
     playerRef.current = player;
 
     // You can handle player events here, for example:
     player.on('waiting', () => {
+      //@ts-ignore
       videojs.log('player is waiting');
     });
 
     player.on('dispose', () => {
+      //@ts-ignore
       videojs.log('player will dispose');
     });
   };
@@ -64,7 +66,7 @@ const CourseView: React.FC = () => {
 
   return (
     <div className='admin-view'>
-      <CourseNav courses={course} onModuleClick={setCurrentVideoUrl}/>
+      <CourseNav courses={course} onModuleClick={setCurrentVideoUrl} />
       <div className='admin-content'>
         <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
 
