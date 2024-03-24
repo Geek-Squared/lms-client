@@ -1,0 +1,24 @@
+.admin-view {
+    display: flex;
+}
+
+.admin-content {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.course-description {
+    background-color: #FFFFFF;
+    margin: 0 0 0 30px;
+    width: 95%;
+    height: inherit;
+}
+
+.course-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }

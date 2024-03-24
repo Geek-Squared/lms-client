@@ -1,0 +1,29 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    background-color: blue;
+    color: white;
+    padding: 100px;
+    height: 30vh;
+    .hero__left {
+        flex: 1;
+        .hero__header {
+            font-size: 6em;
+        }
+    }
+    .hero__right {
+        flex: 1;
+        padding: 3%;
+        .hero__text {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .hero__button {
+            background-color: white;
+            color: blue;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    }
+}

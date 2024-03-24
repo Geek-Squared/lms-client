@@ -1,0 +1,17 @@
+.myEditor .ck.ck-content.ck-editor__editable {
+    width: 680px;
+    min-height: 200px;
+    text-align: left;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+  }
+
+  .myEditor .ck-content {
+    text-align: left !important;
+  }
+
+  .ck-toolbar {
+    width: 700px !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+  }
