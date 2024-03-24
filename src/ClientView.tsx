@@ -25,11 +25,15 @@ function ClientView() {
       <CourseNav />
       <div className="course-list">
         {
-          courses.map((course: any) => (
-            <Link to={`/course/${course._id}`}>
-              <CourseList title={course?.title} description={course?.description} image={course?.image} level={course?.level} />
-            </Link>
-          ))
+          courses.length > 0 ? (
+            courses.map((course: any) => (
+              <Link to={`/course/${course._id}`}>
+                <CourseList title={course?.title} description={course?.description} image={course?.image} level={course?.level} />
+              </Link>
+            ))
+          ) : (
+            <p>No course available</p>
+          )
         }
       </div>
     </>
